@@ -1,14 +1,34 @@
-import {actionTypes} from '../interfaces';
+import {actionTypes, IState} from '../interfaces';
 
-export const initialState = {
-  info_loading: false,
+export const initialState: IState = {
+  login_loading: false,
+  error_message: '',
 };
 const loginReducer = (state = initialState, action: any) => {
   switch (action.type) {
-    case actionTypes.test:
+    case actionTypes.LOGIN_REQUEST:
       return {
         ...state,
-        info_loading: true,
+        login_loading: true,
+      };
+
+    case actionTypes.REGISTER_REQUEST:
+      return {
+        ...state,
+        login_loading: true,
+      };
+    case actionTypes.REGISTER_SUCCESS:
+      return {
+        ...state,
+        login_loading: false,
+        error_message: '',
+        // error_message: action.
+      };
+    case actionTypes.REGISTER_FAIL:
+      return {
+        ...state,
+        error_message: action.message,
+        login_loading: false,
       };
     default:
       return state;

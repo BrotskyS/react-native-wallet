@@ -16,20 +16,32 @@ type ScreenWithParams<T, K extends keyof T | undefined = undefined> =
 type ScreenParams<T> = ScreenWithParams<T, keyof T>;
 
 export type BottomTabParamList = {
-  Sign: ScreenParams<Sign>;
+  onBoarding: ScreenParams<SignTypes>;
   Home: ScreenParams<HomeTypes>;
+  Transaction: ScreenParams<HomeTypes>;
+  Add: ScreenParams<HomeTypes>;
+  Budget: ScreenParams<HomeTypes>;
+  Profile: ScreenParams<HomeTypes>;
 };
 
 export type NavigationProps = {
   navigation: any;
 };
 
+export type WalletTypes = {
+  Wallet: undefined;
+};
+export type SignTypes = {
+  Sign: undefined;
+  SignUp: undefined;
+  PinCode: undefined;
+  PinCode2: {pinCode: string};
+  SetupStart: undefined;
+  Verification: {
+    email: string;
+  };
+};
+
 export type HomeTypes = {
   Home: undefined;
-};
-export type Sign = {
-  Home: undefined;
-  SignIn: undefined;
-  Login: undefined;
-  SignUp: undefined;
 };

@@ -1,81 +1,51 @@
 import React from 'react';
-import {View, TextInput, StyleProp, StyleSheet, Text} from 'react-native';
-interface Iprop {
+import {View, Text, TextInput, StyleSheet} from 'react-native';
+
+interface Iprops {
   value: string;
   onChangeText: (text: string) => void;
-  customStyle?: StyleProp<TextInput>;
-  isPassword?: boolean;
-  label?: string;
-  onFocus?: () => void;
-  typeKeyboard?:
-    | 'cc-csc'
-    | 'cc-exp'
-    | 'cc-exp-month'
-    | 'cc-exp-year'
-    | 'cc-number'
-    | 'email'
-    | 'name'
-    | 'password'
-    | 'postal-code'
-    | 'street-address'
-    | 'tel'
-    | 'username'
-    | 'off'
-    | undefined;
-  error: IError | object;
-}
-interface IError {
-  field: string;
-  text: string;
+  keyboardType?:
+    | 'default'
+    | 'email-address'
+    | 'numeric'
+    | 'phone-pad'
+    | 'number-pad'
+    | 'decimal-pad';
+  isPassword: boolean;
+  placeholder: string;
+  error: {
+    field: string;
+    value: string;
+  };
 }
 export const Input = ({
   value,
   onChangeText,
-  isPassword = false,
-  label,
-  onFocus,
-  typeKeyboard,
+  keyboardType,
+  isPassword,
+  placeholder,
   error,
-}: Iprop): JSX.Element => {
+}: Iprops) => {
+  const isError = placeholder.toLowerCase() === error.field;
   return (
-    <View>
-      {label && <Text style={[s.lable, {marginTop: 20}]}>{label}</Text>}
-      <TextInput
-        onFocus={onFocus}
-        value={value}
-        autoCompleteType={typeKeyboard}
-        onChangeText={onChangeText}
-        placeholder={label}
-        placeholderTextColor={'#636363'}
-        secureTextEntry={isPassword}
-        style={[
-          s.input,
-          error &&
-            error.field === label && {borderWidth: 1, borderColor: 'red'},
-        ]}
-      />
-      {error && error.field === label && (
-        <Text style={[s.lable, {marginTop: 20, color: 'red'}]}>{error.text}</Text>
-      )}
-    </View>
+    <TextInput
+      style={[s.input, {borderColor: isError ? '#dc5555' : '#F1F1FA'}]}
+      placeholder={isError ? error.value : placeholder}
+      value={value}
+      placeholderTextColor={isError ? '#dc5555' : '#ccc'}
+      secureTextEntry={isPassword}
+      onChangeText={onChangeText}
+      keyboardType={keyboardType ? keyboardType : 'default'}
+    />
   );
 };
 const s = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
   input: {
-    backgroundColor: '#323348',
+    marginBottom: 24,
+    borderWidth: 1,
+    borderRadius: 16,
     width: '100%',
-    height: 60,
-    color: '#fff',
-    fontSize: 20,
-    paddingHorizontal: 20,
-    borderRadius: 10,
-  },
-  lable: {
-    color: '#61697D',
-    fontSize: 16,
-    marginBottom: 12,
+    height: 56,
+    paddingLeft: 15,
   },
 });

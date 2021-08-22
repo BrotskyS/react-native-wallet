@@ -1,34 +1,72 @@
 import React from 'react';
 import {
   Text,
-  TouchableOpacity,
   StyleSheet,
   StyleProp,
   ViewStyle,
+  TouchableOpacity,
+  TextStyle,
+  ActivityIndicator,
 } from 'react-native';
 
 interface Iprops {
   text: string;
-  onClick: () => void;
-  style?: StyleProp<ViewStyle>;
+  isMainColor: boolean;
+  styles?: StyleProp<ViewStyle>;
+  onPress: () => void;
+  textStyle?: StyleProp<TextStyle>;
+  image?: JSX.Element; // SVG ELEMENT: <svgImage/>
+  isLoading?: boolean;
 }
-export const Button = ({text, onClick, style}: Iprops) => {
+export const Button = ({
+  text,
+  isMainColor,
+  styles,
+  onPress,
+  textStyle,
+  image,
+  isLoading,
+}: Iprops) => {
   return (
-    <TouchableOpacity onPress={() => onClick()} style={[s.container, style]}>
-      <Text style={s.text}>{text}</Text>
+    <TouchableOpacity
+      activeOpacity={0.8}
+      onPress={onPress}
+      disabled={isLoading}
+      style={[
+        s.container,
+        {backgroundColor: isMainColor ? '#7F3DFF' : '#EEE5FF'},
+        styles,
+      ]}>
+      {image}
+      {isLoading ? (
+        <ActivityIndicator color={'#fff'} />
+      ) : (
+        <Text
+          style={[
+            s.text,
+            {
+              color: isMainColor ? '#fff' : '#7F3DFF',
+              marginLeft: image ? 10 : 0,
+            },
+            textStyle,
+          ]}>
+          {text}
+        </Text>
+      )}
     </TouchableOpacity>
   );
 };
 const s = StyleSheet.create({
   container: {
     width: '100%',
-    height: 63,
-    backgroundColor: '#3FDEAE',
+    height: 56,
+    flexDirection: 'row',
+    borderRadius: 16,
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 10,
   },
   text: {
-    color: '#fff',
+    fontSize: 18,
+    fontWeight: '600',
   },
 });

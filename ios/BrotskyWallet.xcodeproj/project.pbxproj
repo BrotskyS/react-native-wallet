@@ -11,6 +11,7 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		600A11EE538B4DB788AF2D2B /* Abel-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 53DAC5335FD94258A9948534 /* Abel-Regular.ttf */; };
 		66977C842A1A9D854765E56D /* libPods-BrotskyWallet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BFE5DCCB432D66EE5D5F848 /* libPods-BrotskyWallet.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		D3244505406ABD33E2B5CDB3 /* libPods-BrotskyWallet-BrotskyWalletTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F09888C3C079BBA87373BE6 /* libPods-BrotskyWallet-BrotskyWalletTests.a */; };
@@ -38,6 +39,7 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = BrotskyWallet/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = BrotskyWallet/main.m; sourceTree = "<group>"; };
 		1BFE5DCCB432D66EE5D5F848 /* libPods-BrotskyWallet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BrotskyWallet.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		53DAC5335FD94258A9948534 /* Abel-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Abel-Regular.ttf"; path = "../assets/fonts/Abel-Regular.ttf"; sourceTree = "<group>"; };
 		6E701EC3CEF89D6046AF1B0C /* Pods-BrotskyWallet-BrotskyWalletTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrotskyWallet-BrotskyWalletTests.release.xcconfig"; path = "Target Support Files/Pods-BrotskyWallet-BrotskyWalletTests/Pods-BrotskyWallet-BrotskyWalletTests.release.xcconfig"; sourceTree = "<group>"; };
 		8114FC3AE8074AC675D9C36A /* Pods-BrotskyWallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrotskyWallet.debug.xcconfig"; path = "Target Support Files/Pods-BrotskyWallet/Pods-BrotskyWallet.debug.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = BrotskyWallet/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				1053E08ED7A66C4DEE14F208 /* Pods */,
+				D0BAB1FD279648D59872E875 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -146,6 +149,15 @@
 				00E356EE1AD99517003FC87E /* BrotskyWalletTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		D0BAB1FD279648D59872E875 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				53DAC5335FD94258A9948534 /* Abel-Regular.ttf */,
+			);
+			name = Resources;
+			path = "";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -244,6 +256,7 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				600A11EE538B4DB788AF2D2B /* Abel-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
