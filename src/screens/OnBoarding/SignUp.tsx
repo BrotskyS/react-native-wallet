@@ -10,6 +10,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {registerRequest} from '../../redux/login/actions';
 import {IRootReducer} from '../../redux/rootReducer';
 import {navigate} from '../../navigation/RootNavigator';
+import auth from '@react-native-firebase/auth';
 export const SignUp = ({
   navigation,
 }: StackScreenProps<
@@ -26,6 +27,24 @@ export const SignUp = ({
   });
   const dispatch = useDispatch();
   const store = useSelector((state: IRootReducer) => state.login);
+  const logIn = () => {
+    auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(() => {
+        console.log('User account created & signed in!');
+      })
+      .catch(error => {
+        if (error.code === 'auth/email-already-in-use') {
+          console.log('That email address is already in use!');
+        }
+
+        if (error.code === 'auth/invalid-email') {
+          console.log('That email address is invalid!');
+        }
+
+        console.error(error);
+      });
+  }
 
   const validateData = () => {
     function validateEmail(email: string) {
@@ -40,7 +59,8 @@ export const SignUp = ({
     } else if (password.length < 6) {
       return setError({field: 'password', value: 'password is too short'});
     } else {
-      dispatch(registerRequest({email, name, password}));
+      logIn()
+      // dispatch(registerRequest({email, name, password}));
     }
   };
   return (

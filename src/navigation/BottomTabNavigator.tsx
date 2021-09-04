@@ -13,9 +13,9 @@ import {PinCode2} from '../screens/OnBoarding/PinCode2';
 import {SetupStart} from '../screens/OnBoarding/SetupStart';
 import {Home} from '../screens/Home/Home';
 import HomeIco from '../../assets/img/Home.svg';
-import Transaction from '../../assets/img/Transaction.svg'
-import Budget from '../../assets/img/budget.svg'
-import Profile from '../../assets/img/profile.svg'
+import Transaction from '../../assets/img/Transaction.svg';
+import Budget from '../../assets/img/budget.svg';
+import Profile from '../../assets/img/profile.svg';
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 import {HeaderComponent} from './HeaderNavigator';
 const screenOptions: StackNavigationOptions = {
@@ -23,7 +23,11 @@ const screenOptions: StackNavigationOptions = {
     return <HeaderComponent {...props} />;
   },
 };
-export const BottomTabNavigator: React.FC = () => {
+
+interface Iprops {
+  isAuth: boolean;
+}
+export const BottomTabNavigator = ({isAuth}: Iprops) => {
   const icons: any = {
     onBoarding: null,
     Home: HomeIco,
@@ -40,6 +44,7 @@ export const BottomTabNavigator: React.FC = () => {
 
         style: {backgroundColor: '#fff'},
       }}
+      initialRouteName={isAuth ? 'Home' : 'onBoarding'}
       screenOptions={({route}) => {
         const Icon = icons[route.name];
         return {
